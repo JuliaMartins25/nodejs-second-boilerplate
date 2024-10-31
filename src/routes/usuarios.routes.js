@@ -65,6 +65,19 @@ usuariosRoutes.get("/", (req, res) => {
   usuariosRoutes.delete("/:id", (req, res) => {
     const { id } = req.params;
 
+    const user = usersRepository.deleteUser(id);
+
+    if (!user) {
+      return res.status(404).json({
+        message: `Usuário com o id ${id} não encontrado`,
+      });
+    }
+
+    return res.status(200).json({
+      message: `Usuário com o id ${id} excluído com sucesso`,
+      user,
+    });
+
   })
 
 

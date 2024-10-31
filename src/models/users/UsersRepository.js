@@ -18,7 +18,7 @@ class UsersRepository{
     }
 
     getUserById(id) {
-        const user = this.getUserById(id);
+        const user = this.users.find(user => user.id == id);
 
         return user;
     }
@@ -44,7 +44,7 @@ class UsersRepository{
             return null;
         }
 
-        this.users = this.users.filter(user => user.id !== id);
+        this.users = this.users.filter(user => user.id != id);
 
         return user;
     }
